@@ -83,7 +83,9 @@ body {
     padding: 8px;
 }
 
+
 .delete-button {
+    float: right;
     background-color:#f00004;
     color:#ffffff;  
     border: none;
@@ -102,6 +104,7 @@ body {
 }
 
 .done-button {
+    float: right;
     background-color:#16980a;
     color:#ffffff;  
     border: none;
@@ -117,4 +120,21 @@ body {
 
 .done-button:hover {
     background-color: #17521f;
+}
+
+#clock-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 24vh;
+}
+
+#day, #date, #time {
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#date {
+    margin: 15px;
 }

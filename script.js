@@ -1,4 +1,5 @@
 loadTasks();
+updateClock();
 
         function addTask() {
             var taskInput = document.getElementById("taskInput");
@@ -64,4 +65,37 @@ loadTasks();
                     };
                 });
             }
+        }
+
+        function updateClock() {
+            const dayElement = document.getElementById('day');
+            const dateElement = document.getElementById('date');
+            const timeElement = document.getElementById('time');
+            const now = new Date();
+        
+            const dayOptions = {
+                weekday: 'long',
+            };
+        
+            const dateOptions = {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+            };
+        
+            const timeOptions = {
+                hour: 'numeric',
+                minute: 'numeric',
+                second: 'numeric',
+            };
+        
+            const formattedDay = now.toLocaleDateString(undefined, dayOptions);
+            const formattedDate = now.toLocaleDateString(undefined, dateOptions);
+            const formattedTime = now.toLocaleTimeString(undefined, timeOptions);
+        
+            dayElement.textContent = formattedDay;
+            dateElement.textContent = formattedDate;
+            timeElement.textContent = formattedTime;
+        
+            setTimeout(updateClock, 1000); // Update the clock every second
         }
