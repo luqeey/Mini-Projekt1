@@ -1,14 +1,17 @@
 loadTasks();
-updateClock();
+        updateClock();
 
         function addTask() {
             var taskInput = document.getElementById("taskInput");
             var taskText = taskInput.value.trim();
 
+            var deadlineInput = document.getElementById("deadlineInput");
+            var deadlineValue = deadlineInput.value;
+
             if (taskText !== "") {
                 var taskList = document.getElementById("tasks");
                 var li = document.createElement("li");
-                li.textContent = taskText;
+                li.textContent = taskText + " - (Deadline) "+ deadlineValue;
 
                 var deleteButton = document.createElement('button');
                 deleteButton.textContent = 'Delete';
@@ -25,8 +28,15 @@ updateClock();
 
                 doneButton.onclick = function() {
                     li.style.textDecoration = li.style.textDecoration === 'line-through' ? 'none' : 'line-through';
+                    li.classList.remove("overdue-task")
                     saveTasks();
                 };
+
+                var deadline = new Date(deadlineValue);
+                var currentDate = new Date();
+                if (deadline < currentDate) {
+                    li.classList.add("overdue-task");
+                }
 
                 li.appendChild(doneButton);
                 li.appendChild(deleteButton);
@@ -34,6 +44,7 @@ updateClock();
                 taskList.appendChild(li);
                 saveTasks();
                 taskInput.value = "";
+                deadlineInput.value = "";
             }
         }
 
@@ -72,30 +83,30 @@ updateClock();
             const dateElement = document.getElementById('date');
             const timeElement = document.getElementById('time');
             const now = new Date();
-        
+
             const dayOptions = {
                 weekday: 'long',
             };
-        
+
             const dateOptions = {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',
             };
-        
+
             const timeOptions = {
                 hour: 'numeric',
                 minute: 'numeric',
                 second: 'numeric',
             };
-        
+
             const formattedDay = now.toLocaleDateString(undefined, dayOptions);
             const formattedDate = now.toLocaleDateString(undefined, dateOptions);
             const formattedTime = now.toLocaleTimeString(undefined, timeOptions);
-        
+
             dayElement.textContent = formattedDay;
             dateElement.textContent = formattedDate;
             timeElement.textContent = formattedTime;
-        
-            setTimeout(updateClock, 1000); // Update the clock every second
+
+            setTimeout(updateClock, 1000);
         }

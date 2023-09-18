@@ -22,7 +22,10 @@ body {
 }
 
 #newtask {
-    position: relative; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 30px 20px;
 }
 
@@ -37,6 +40,7 @@ body {
     font-family: 'Poppins',sans-serif;
     font-size: 15px;
     border: 2px solid #d1d3d4;
+    margin-top: 8px;
 }
 
 #newtask input:hover {
@@ -49,8 +53,6 @@ body {
 }
 
 #newtask button{
-    position: relative;
-    float: right;
     font-weight: 500;
     font-size: 16px;
     background-color: #8f0077;
@@ -62,6 +64,7 @@ body {
     height: 45px;
     border-radius: 5px;
     font-family: 'Poppins',sans-serif;
+    margin-top: 8px;
 }
 
 #newtask button:hover {
@@ -81,6 +84,7 @@ body {
 
 #tasks li {
     padding: 8px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 
@@ -141,4 +145,9 @@ body {
 
 #date {
     margin: 15px;
+}
+
+.overdue-task {
+    color: red;
+    font-weight: bold; 
 }
